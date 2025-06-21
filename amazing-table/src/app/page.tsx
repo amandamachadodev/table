@@ -76,13 +76,14 @@ export default function Home() {
   const [data, _setData] = useState(() => [...defaultData])
    const table = useReactTable({data, columns, getCoreRowModel: getCoreRowModel(),})
   return (
-    <div className="p-2">
-      <table>
-        <thead>
+    <div className="w-full flex justify-center items-center mt-10">
+      <div className="rounded-lg overflow-hidden w-[80%] border-2 border-violet-300">
+      <table className="w-full">
+        <thead className="bg-violet-300">
           {table.getHeaderGroups().map(headerGroup => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map(header => (
-                <th key={header.id}>
+                <th key={header.id} className="text-left p-2">
                   {header.isPlaceholder
                     ? null
                     : flexRender(
@@ -98,7 +99,7 @@ export default function Home() {
           {table.getRowModel().rows.map(row => (
             <tr key={row.id}>
               {row.getVisibleCells().map(cell => (
-                <td key={cell.id}>
+                <td key={cell.id} className=" text-left p-2">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}
@@ -109,7 +110,7 @@ export default function Home() {
           {table.getFooterGroups().map(footerGroup => (
             <tr key={footerGroup.id}>
               {footerGroup.headers.map(header => (
-                <th key={header.id}>
+                <th key={header.id} className="text-left p-2">
                   {header.isPlaceholder
                     ? null
                     : flexRender(
@@ -122,6 +123,7 @@ export default function Home() {
           ))}
         </tfoot>
       </table>
+      </div>
     </div>
   );
 }
